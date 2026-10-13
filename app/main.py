@@ -39,7 +39,6 @@ MONGO_DB:  str = os.getenv("MONGO_DB",  "hrone")
 # This eliminates the entire class of naive-datetime timezone bugs.
 client = MongoClient(MONGO_URI, tz_aware=True)
 db     = client[MONGO_DB]
-
 # IST offset used throughout for shift/date calculations
 IST = timezone(timedelta(hours=5, minutes=30))
 
