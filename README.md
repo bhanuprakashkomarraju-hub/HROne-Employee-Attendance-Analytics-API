@@ -17,9 +17,9 @@ pip install -r requirements.txt
 
 ### 2. Configure environment variables
 
-Create a `.env` file in the project root (never commit it — it is already in `.gitignore`).
+Create a `.env` file in the project root. Never commit this file; it is already listed in `.gitignore`.
 
-Configure these environment variables in your private `.env` file:
+Configure these variables in your private `.env` file:
 
 ```dotenv
 MONGO_URI=your_private_MongoDB_connection_string
@@ -27,11 +27,9 @@ MONGO_DB=hrone
 ```
 
 - `MONGO_URI` — your private MongoDB Atlas connection string or local MongoDB URI.
-- `MONGO_DB` — the MongoDB database name (for example, `hrone`).
+- `MONGO_DB` — the MongoDB database name. The example above uses `hrone`.
 
-Real environment variables override values from `.env`. Never commit `.env` or expose database credentials.
-- Real environment variables always override the `.env` file.  
-- **Never commit credentials.** Do not include `.env` in the repository.
+Real environment variables override values from `.env`. Never commit credentials or expose database connection details.
 
 MongoDB Atlas free tier (M0) works. Local Docker:
 

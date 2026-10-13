@@ -17,7 +17,7 @@ from pymongo import MongoClient
 load_dotenv()
 here = pathlib.Path(__file__).parent / "sample_data"
 opts = json_util.JSONOptions(tz_aware=True)
-db = MongoClient(os.getenv("MONGO_URI", "mongodb://localhost:27017"), tz_aware=True)[os.getenv("MONGO_DB", "attendance_db")]
+db = MongoClient(os.getenv("MONGO_URI", "mongodb://localhost:27017"), tz_aware=True)[os.getenv("MONGO_DB", "hrone")]
 
 for name in ("employees", "attendance_logs"):
     docs = json_util.loads((here / f"{name}.json").read_text(), json_options=opts)
