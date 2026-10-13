@@ -1,0 +1,11 @@
+﻿.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+backup_before_implementation/
+backup_before_implementation/
+__err.txt
+__wh_err.txt
