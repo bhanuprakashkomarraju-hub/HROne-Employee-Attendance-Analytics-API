@@ -17,15 +17,19 @@ pip install -r requirements.txt
 
 ### 2. Configure environment variables
 
-Create a `.env` file in the project root (never commit it — it is already in `.gitignore`):
+Create a `.env` file in the project root (never commit it — it is already in `.gitignore`).
 
-```
-MONGO_URI=<your MongoDB connection string>
-MONGO_DB=<your database name>
+Configure these environment variables in your private `.env` file:
+
+```dotenv
+MONGO_URI=your_private_MongoDB_connection_string
+MONGO_DB=hrone
 ```
 
-- `MONGO_URI` — MongoDB connection string, configured through an environment variable. Use your private Atlas connection string or a local MongoDB URI; never commit credentials.
- - `MONGO_DB` — the database name to use (e.g. `hrone`).  
+- `MONGO_URI` — your private MongoDB Atlas connection string or local MongoDB URI.
+- `MONGO_DB` — the MongoDB database name (for example, `hrone`).
+
+Real environment variables override values from `.env`. Never commit `.env` or expose database credentials.
 - Real environment variables always override the `.env` file.  
 - **Never commit credentials.** Do not include `.env` in the repository.
 
@@ -142,9 +146,9 @@ Every point-in-time value in requests and responses is an **integer count of mil
 
 ## Known limitations
 
-- **Runtime testing has not yet been performed.** The implementation was validated by Python syntax checks and static content checks only. No endpoint has been called against a live MongoDB instance.
-- The `/admin/explain` endpoint for `department_summary` explains the `attendance_logs` aggregation only. The separate `employees` headcount query (small collection, indexed) is not explained.
-- The `$densify` stage in the trend endpoint requires MongoDB 5.1+. MongoDB 6.0+ is required to run this project.
+- **Runtime testing:** Selected runtime tests have been performed against a live MongoDB Atlas instance, including the health endpoint, employee listing, attendance punch-in/punch-out behavior, and the attendance-list explain endpoint. Full end-to-end testing of every endpoint and all business-rule edge cases has not yet been completed.
+- **Department summary explain plan:** The `/admin/explain` endpoint for `department_summary` explains only the `attendance_logs` aggregation. The separate `employees` headcount query (small collection, indexed) is not explained.
+- **MongoDB version requirement:** The `$densify` stage in the trend endpoint requires MongoDB 5.1 or newer. MongoDB 6.0 or newer is required to run this project.
 
 ---
 
